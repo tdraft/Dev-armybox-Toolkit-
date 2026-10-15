@@ -1,0 +1,5 @@
+{
+  "name": "Armybox Toolkit Development Container",
+  "image": "mcr.microsoft.com/devcontainers/rust:1",
+  "postCreateCommand": "rustup target add x86_64-unknown-linux-musl"
+}
