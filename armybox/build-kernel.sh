@@ -2,9 +2,15 @@
 set -e
 
 KERNEL_VERSION="6.1.68"
-wget "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${KERNEL_VERSION}.tar.xz"
-tar -xf "linux-${KERNEL_VERSION}.tar.xz"
+KERNEL_ARCHIVE="linux-${KERNEL_VERSION}.tar.xz"
+if [ ! -f "$KERNEL_ARCHIVE" ]; then
+	wget "https://cdn.kernel.org/pub/linux/kernel/v6.x/${KERNEL_ARCHIVE}"
+fi
+if [ ! -d "linux-${KERNEL_VERSION}" ]; then
+	tar -xf "$KERNEL_ARCHIVE"
+fi
 cd "linux-${KERNEL_VERSION}"
+export ARCH=x86_64
 
 # Start with a minimal baseline configuration
 make tinyconfig
