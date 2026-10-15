@@ -1,0 +1,25 @@
+[package]
+name = "armybox-toolkit"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+armybox = { version = "0.5", default-features = false }
+
+[features]
+default = []
+hardened = ["armybox/alloc", "armybox/cat", "armybox/echo",
+			"armybox/ls", "armybox/boolean", "armybox/test"]
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[[bin]]
+name = "armybox"
+path = "src/main.rs"

@@ -1,0 +1,7 @@
+/.tools/
+/.initramfs/
+/rootfs.ext4
+/armybox/target/
+/armybox/linux-6.1.68/
+/armybox/linux-6.1.68.tar.xz*
+/armybox/vmlinux-uncompressed
